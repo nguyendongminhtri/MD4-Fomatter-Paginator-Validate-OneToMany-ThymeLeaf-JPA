@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<h1>Create customer</h1>
+<p>
+    <a href="/">Customer list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-customer}" th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td>First name:</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td>Province:</td>
+            <td>
+                <select th:field="*{province}">
+                    <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create customer"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Add Customer</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/create-customer" method="post" th:object="${customer}">-->
+<!--    <label>First Name</label><br>-->
+<!--    <input type="text" th:field="*{firstName}"><br>-->
+<!--    <label>Last Name</label><br>-->
+<!--    <input type="text"  th:field="*{lastName}"><br>-->
+<!--    <select th:field="*{province}">-->
+<!--        <option th:each="p:${provinces}" th:value="${p.id}" th:utext="${p.name}"></option>-->
+<!--    </select>-->
+<!--    <button type="submit">Create</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
